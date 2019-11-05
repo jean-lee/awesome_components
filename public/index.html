@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>awesome_components</title>
+
+    <style>
+      #appLoading { width: 100%; height: 100%; }
+      #appLoading img {
+          position: absolute;
+          display: block;
+          font-size: 50px;
+          line-height: 50px;
+          top: 50%;
+          left: 50%;
+          width: 444px;
+          height: auto;
+          object-fit: cover;
+          -webkit-transform: translateY(-50%)  translateX(-50%);
+          transform: translateY(-50%)  translateX(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but awesome_components doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+
+    <div id="app" style="display: none"></div>
+    <div id="appLoading">
+      <img src="./image/loading_color.gif" alt="loading...">
+   </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
