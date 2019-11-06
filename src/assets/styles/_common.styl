@@ -1,0 +1,45 @@
+@import '~@/assets/styles/var'
+
+*, *:before, *:after
+  box-sizing border-box
+
+*
+  font-family $font_family
+
+i
+  font-style normal
+
+a
+  text-decoration none
+  color $black_font_color
+
+body
+  position relative
+  // background-color $app_main_bg_color
+  background-color $bg_color
+  color $black_font_color
+  font-size $normal_font_size
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  font-family $font_family
+  // min-width 1024px
+
+/* 自定义原生 Chrome 滚动条 */
+::-webkit-scrollbar
+  width 8px
+  height 9px
+::-webkit-scrollbar-track-piece
+  background-color transparent
+  -webkit-border-radius 20px
+::-webkit-scrollbar-thumb
+  height 10px
+  -webkit-transform rotate3d(0,0,0,0)
+  transform rotate3d(0,0,0,0)
+  transition background-color 100ms ease-out
+  background-color rgba($black_font_color, 0.3)
+  border-radius 20px
+  &:vertical, &:horizontal
+    width 8px
+  &:hover
+    background-color rgba($black_font_color, 0.4)
+    width 8px
