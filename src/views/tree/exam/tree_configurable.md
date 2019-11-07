@@ -199,7 +199,6 @@ export default class TreeConfigurable extends Vue {
 
   <div class="question_info_lists">
     <!-- 试卷树 -->
-    <!--  :render-content="renderContent" -->
     <el-tree ref="tree" :key="tree_key" node-key="id" :expand-on-click-node="false"
       :data="treeData" :default-expanded-keys="defaultExpand"></el-tree>
 
@@ -216,6 +215,18 @@ export default class TreeConfigurable extends Vue {
     
   </div>
 
+    <!-- <el-tree ref="tree" :data="treeData" :key="tree_key" node-key="id" :expand-on-click-node="false"
+     :default-expanded-keys="defaultExpand">
+      <div class="custom_tree_node" slot-scope="{ node, data }">
+        <el-input class="edit_name common_input_32" :value="data.label" @blur="edit_sure($event, data)"/>
+        <p class="tree_node_op">
+          <i class="el-icon-edit node_edit" @click="nodeEdit($event, data)"></i>
+          <i class="el-icon-delete node_delete" @click="nodeDelete(node, data)"></i>
+          <i class="el-icon-top node_up" @click="nodeUp(node, data)"></i>
+          <i class="el-icon-bottom node_down" @click="nodeDown(node, data)"></i>
+        </p>
+      </div>
+     </el-tree> -->
 </div>
 </template>
 

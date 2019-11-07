@@ -23,3 +23,84 @@ $big_title_size = 20px
 
 // px
 $container_width = 1200px
+
+
+
+/* ===================================== mixin ===================================== */
+
+.iconfont
+  margin 0 5px
+
+// 删除标签，s, strike, del标签自带text-decoration: line-through
+del
+  color $danger_color!important
+
+// 清浮动
+clearfix()
+  &:after
+    display block
+    content " "
+    height 0
+    line-height 0
+    clear both
+    visibility hidden
+
+.clearfix
+  &:after
+    display block
+    content "."
+    height 0
+    line-height 0
+    clear both
+    visibility hidden
+
+
+// 文本超过显示省略号
+.text_overflow
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+
+// 防文字溢出
+text_overflow()
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+
+// 1px border
+border_1px(color=#fff, top=true, right=true, bottom=true, left=true)
+  if top
+    border-top 1px solid color
+  if right
+    border-right 1px solid color
+  if bottom
+    border-bottom 1px solid color
+  if left
+    border-left 1px solid color
+
+// 禁止选中文字
+disabled_select_text()
+  user-select none
+
+
+// 文字前面的红色五角星提示
+tip_star()
+  position relative
+  &:before
+    position absolute
+    left -10px
+    top 2px
+    content '*'
+    color $danger_color
+    font-size $big_title_size
+
+.tip_star
+  position relative
+  &:before
+    position absolute
+    left -10px
+    top 2px
+    content '*'
+    color $danger_color
+    font-size $big_title_size
+

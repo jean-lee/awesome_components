@@ -1,0 +1,174 @@
+/*=============================================== elment ui 组件样式覆盖 ========================================*/
+// 按钮
+.common_btn_32
+  padding 0 10px
+  height 32px
+  line-height 32px
+  border none
+  color $white_font_color
+.common_btn_32.is-disabled
+  background #EBEEF5!important
+  color #C0C4CC!important
+
+.el-button:focus
+.el-button:hover
+  color $main_color
+  background #fff
+
+// 下拉列表
+.common_select_32
+  height 32px
+  line-height 32px
+  .el-input
+    input
+      height 32px
+      line-height 32px
+    .el-input__icon
+      line-height 32px
+
+// 级联菜单
+.common_cascader_32
+  height 32px
+  line-height 32px
+  .el-input
+    height 32px
+    .el-input__inner
+      height 32px!important
+      line-height 32px
+    .el-input__icon
+      height 32px
+      line-height 32px
+
+// 日期选择器
+.common_date_32
+  .el-input__inner
+    height 32px
+
+.common_date_picker_32
+  padding 0 0 0 8px!important
+  height 32px
+  line-height 32px
+  .el-range-input
+    height 30px
+    line-height 30px
+  .el-range-separator,
+  .el-range__icon,
+  .el-range__close-icon,
+    height 32px
+    padding 0
+  .el-range-separator
+    padding 0
+    margin 0 6px
+    line-height 29px
+
+
+// 输入框
+// 时间选择器
+// 带记步数的input
+.common_input_22
+.common_input_num_22
+  .el-input__inner
+    height 22px
+    line-height 22px
+  .el-input__icon
+    line-height 22px
+
+.common_input_32
+.common_input_num_32
+  .el-input__inner
+    height 32px
+    line-height 32px
+  .el-input__icon
+    line-height 32px
+
+// 右侧带灰色背景按钮放大镜的搜索框
+.common_input_32.has_search_btn
+  .el-input__inner
+    padding-right 66px
+  .el-input__suffix
+    top 1px
+    right 1px
+    width 36px
+    height 30px
+    line-height 30px
+    border-top-right-radius 4px
+    border-bottom-right-radius 4px
+    font-size 18px
+    color #A5A5A5
+    background #EBEEF5
+    cursor pointer
+
+// 带计数器的input
+.common_input_number_32
+  height 32px
+  line-height 32px
+  .el-input__inner
+    height 32px
+    line-height 32px
+  span
+    height 30px
+    line-height 30px
+
+
+.common_input_num_32.is-controls-right
+  height 32px
+  line-height 32px
+  .el-input__inner
+    padding-left 1px
+    padding-right 40px
+  .el-input-number__decrease
+  .el-input-number__increase
+    width 30px
+    height 16px
+    line-height 16px
+
+
+// ##################################################### 可增删改移树示例 ###########################################################
+.module_tree_conf
+  input
+    padding 0 15px
+    height 32px
+    line-height 32px
+    border-radius 4px
+    border 1px solid $main_color
+    outline 0
+    transition border-color .2s cubic-bezier(.645,.045,.355,1)
+  .my_tree
+    margin-top 12px
+    width 306px
+    .el-tree-node
+      line-height 42px
+      .el-tree-node__content
+        height 42px
+        &:hover
+          background rgba(52,204,153, .1)
+        .common_input_32
+          width calc(100% - 88px)
+          .el-input__inner
+            border 1px solid #fff
+            border-radius 0
+      .custom_tree_node
+        height 42px
+        line-height 42px
+        width 100%
+        clearfix()
+        p
+          display inline-block
+        .tree_node_name
+          width calc(100% - 88px)
+          text_overflow()
+        .tree_node_op
+          float right
+          i
+            opacity 0
+            margin-right 2px
+            color $main_color
+            font-size $small_title_size
+            &:nth-child(1)
+              margin-right 6px
+      .custom_tree_node
+        &:hover
+          i
+            opacity 1
+            transition all .5s
+          

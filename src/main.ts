@@ -8,9 +8,8 @@ import router from './router';
 
 // ---------------------------------------- 样式 ----------------------------------------
 import '@/assets/styles/reset.styl';
-import '@/assets/styles/_common.styl';
 import 'element-ui/lib/theme-chalk/index.css';
-
+import '@/assets/styles/index.styl';
 
 
 Vue.component(Button.name, Button);
