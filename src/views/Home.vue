@@ -9,7 +9,6 @@ import { TREE_DATA } from '@/constant/tree_data.ts';
 
 export default {
   name: 'tree-conf',
-  components: {},
   data() {
     return {
       treeData: TREE_DATA,
@@ -75,72 +74,6 @@ export default {
       children.splice(index, 1);
     },
 
-    // 节点上移
-    nodeUp(node, data) {
-      const parent = node.parent;
-      const children = parent.data.children || parent.data;
-      const cIndex = children.findIndex((d) => d.id === data.id);
-
-      if (parent.level === 0 && cIndex === 0) {
-        return ;
-      } else if (parent.level !== 0 && cIndex === 0) { // 不同父节点中移动
-        const parent2 = parent.parent;
-        const children2 = parent2.data.children || parent2.data;
-        const pIndex2 = parseInt(children2.findIndex((p) => p.id === parent.data.id), 10) - 1;
-
-        if (pIndex2 < 0) {
-          return ;
-        }
-        children2[pIndex2].children.push(data);
-        children.splice(cIndex, 1);
-
-        this.defaultExpand[0] = children2[pIndex2].id;
-      } else if ((parent.level === 0 && cIndex !== 0) || (parent.level !== 0 && cIndex !== 0)) {
-        const tempChildrenNodex1 = children[cIndex - 1];
-        const tempChildrenNodex2 = children[cIndex];
-
-        this.$set(children, cIndex - 1, tempChildrenNodex2);
-        this.$set(children, cIndex, tempChildrenNodex1);
-        this.defaultExpand[0] = data.id;
-      }
-
-      this.tree_key++;
-    },
-
-    // 节点下移
-    nodeDown(store, node, data) {
-      const parent = node.parent;
-      const children = parent.data.children || parent.data;
-      const cIndex = children.findIndex((d) => d.id === data.id);
-      const cLength = children.length - 1; // 最边上的节点
-      const allLevel = store.data.length - 1; // 树的深度
-
-      if (parent.level === allLevel && cIndex === cLength) { // 最最末的节点
-        return ;
-      } else if (parent.level !== allLevel && cIndex === cLength) { //父节点不同
-        const parent2 = parent.parent;
-        const children2 = parent2.data.children || parent2.data;
-        const pIndex2 = parseInt((children2.findIndex((p) => p.id === parent.data.id)), 10);
-
-        if (pIndex2 === allLevel) {
-          return ;
-        }
-        children2[pIndex2 + 1].children.push(data);
-        children.splice(cIndex, 1);
-        this.defaultExpand[0] = children2[pIndex2 + 1].id;
-      } else if ((parent.level === allLevel && cIndex !== cLength) || (parent.level !== allLevel && cIndex !==
-          cLength)) { // 父节点相同
-        const tempChildrenNodex1 = children[cIndex + 1];
-        const tempChildrenNodex2 = children[cIndex];
-
-        this.$set(children, cIndex + 1, tempChildrenNodex2);
-        this.$set(children, cIndex, tempChildrenNodex1);
-        this.defaultExpand[0] = data.id;
-      }
-
-      this.tree_key++;
-    },
-
     // 编辑
     showOrEdit(data) {
       if (data.isEdit) {
@@ -148,38 +81,21 @@ export default {
       } else {
         return data.label;
       }
-
     },
 
-    // 试卷结构树操作group node,
+    // 试卷结构树操作
     renderContent(h, {node, data, store}) {
       return (
         <div class='custom_tree_node'>
           <p class='tree_node_name'>
-          { this.showOrEdit(data) }
+            { this.showOrEdit(data) }
           </p>
           <p class='tree_node_op'>
             <i class='el-icon-edit node_edit' on-click={ (ev) => this.nodeEdit(ev, store, data) }></i>
             <i class='el-icon-delete node_delete' on-click={ () => this.nodeDelete(node, data) }></i>
-            <i class='el-icon-top node_up' on-click={ () => this.nodeUp(node, data) }></i>
-            <i class='el-icon-bottom node_down' on-click={ () => this.nodeDown(store, node, data) }></i>
           </p>
         </div>
       );
-    },
-    append(data) {
-      const newChild = { id: id++, label: 'testtest', children: [] };
-      if (!data.children) {
-        this.$set(data, 'children', []);
-      }
-      data.children.push(newChild);
-    },
-
-    remove(node, data) {
-      const parent = node.parent;
-      const children = parent.data.children || parent.data;
-      const index = children.findIndex((d) => d.id === data.id);
-      children.splice(index, 1);
     },
   },
 };
@@ -188,20 +104,20 @@ export default {
 <template>
 <div class="module_tree_conf">
   <p class="header"><span class="title">试卷结构</span><span class="tip">（可以点击选中对应题目）</span></p>
-  <p class="add_new_question" @click="add_new_question"><i class="el-icon-plus"></i>添加新大题</p>
+  <p  class="add_new_question" @click="add_new_question"><i class="add_icon"></i>添加新大题</p>
   <el-row class="add_question" v-show="add_question_flag">
     <el-col :span="12">
       <el-input class="common_input_32" v-model="new_question_name" placeholder="请输入大题名称"></el-input>
     </el-col>
 
     <el-col :span="12">
-      <el-button class="common_btn_32 btn_sure" @click.stop="add_question_sure">确定</el-button>
+      <el-button class="common_btn_32 btn_sure" :disabled="new_question_name.trim() === ''" @click.stop="add_question_sure">确定</el-button>
       <el-button class="common_btn_32 btn_cancel" @click.stop="add_question_cancel">取消</el-button>
     </el-col>
   </el-row>
 
   <el-tree ref="tree" class="my_tree" :data="treeData" :key="tree_key" node-key="id" :expand-on-click-node="false"
-    :default-expanded-keys="defaultExpand" :render-content="renderContent"/>
+    :default-expanded-keys="defaultExpand" :render-content="renderContent" draggable/>
 
 </div>
 </template>
@@ -231,6 +147,13 @@ export default {
     color $main_color
     cursor pointer
     border_1px(#eee, false, false, true, false)
+    .add_icon
+      margin-right 10px
+      display inline-block
+      width 16px
+      height 16px
+      background url('~@/assets/images/add.png')
+      vertical-align middle
   .add_question
     margin-left 12px
     margin-top 12px

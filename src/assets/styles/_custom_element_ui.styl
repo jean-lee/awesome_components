@@ -125,14 +125,6 @@
 
 // ##################################################### 可增删改移树示例 ###########################################################
 .module_tree_conf
-  input
-    padding 0 15px
-    height 32px
-    line-height 32px
-    border-radius 4px
-    border 1px solid $main_color
-    outline 0
-    transition border-color .2s cubic-bezier(.645,.045,.355,1)
   .my_tree
     margin-top 12px
     width 306px
@@ -142,21 +134,26 @@
         height 42px
         &:hover
           background rgba(52,204,153, .1)
-        .common_input_32
-          width calc(100% - 88px)
-          .el-input__inner
-            border 1px solid #fff
-            border-radius 0
       .custom_tree_node
         height 42px
         line-height 42px
-        width 100%
+        width calc(100% - 24px)
         clearfix()
         p
           display inline-block
         .tree_node_name
           width calc(100% - 88px)
+          font-size $small_title_size
           text_overflow()
+          input
+            padding 0 8px
+            width calc(100% - 44px)
+            height 32px
+            line-height 32px
+            border-radius 4px
+            border 1px solid $main_color
+            outline 0
+            transition border-color .2s cubic-bezier(.645,.045,.355,1)
         .tree_node_op
           float right
           i

@@ -51,6 +51,7 @@ export const TREE_DATA = [
       {
         id: 5,
         label: '二级 2-1',
+        isEdit: false,
       },
       {
         id: 6,

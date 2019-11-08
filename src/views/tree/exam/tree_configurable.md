@@ -3,6 +3,8 @@
  * author:jean-lee
  * date: 2019/11/06
  * desc: el-tree 树节点增删改移
+ * 树的第一个一级节点及第一个节点的子节点不能上移，树的的最后一个一级节点及最后一个子节点不能下移
+ * 第一个大题的第一个小题不能上移，最后一个大题的最后一个小题不能下移
  */
 
 import { Component, Vue, Emit, Prop, Watch } from 'vue-property-decorator';

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { Button, Tree, Input, Row, Col } from 'element-ui';
+import { Button, Tree, Input, Row, Col, Message } from 'element-ui';
 // import "vue-tsx-support/enable-check";
 import App from './app.vue';
 import router from './router';
@@ -17,6 +17,7 @@ Vue.use(Tree);
 Vue.use(Input);
 Vue.use(Row);
 Vue.use(Col);
+Vue.prototype.$message = Message;
 
 Vue.config.productionTip = false;
 
