@@ -77,7 +77,7 @@ export default {
     // 编辑
     showOrEdit(data) {
       if (data.isEdit) {
-        return <input value={data.label} on-blur={ev => this.edit_sure(ev, data)}/>;
+        return <input value={data.label} on-blur={ (ev) => this.edit_sure(ev, data)}/>;
       } else {
         return data.label;
       }

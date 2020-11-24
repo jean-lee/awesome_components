@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/views/home.vue';
+import Graph from '@/views/graph/flow/index.vue';
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+  },
+  {
+    path: '/graph',
+    name: 'graph',
+    component: Graph,
   },
   // {
   //   path: '/tree',

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import { Button, Tree, Input, Row, Col, Message } from 'element-ui';
 // import "vue-tsx-support/enable-check";
-import App from './app.vue';
-import router from './router';
+import App from '@/app.vue';
+import router from '@/router';
 
 
 
